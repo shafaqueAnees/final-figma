@@ -1,95 +1,53 @@
-"use client"; // This marks the component as a client component
+import Image from 'next/image'
+import React from 'react'
+import filter from '../../public/icons/filter.png'
+import profile from '../../public/images/prof.png'
+import { CiSearch } from 'react-icons/ci'
+import { FaHeart } from 'react-icons/fa'
+import { IoIosNotifications } from 'react-icons/io'
+import { IoSettingsSharp } from 'react-icons/io5'
 
-import React, { useState } from "react";
-import { FiMenu, FiSettings } from "react-icons/fi";
-import { AiOutlineHeart, AiOutlineBell } from "react-icons/ai";
-import Image from "next/image"; // For image optimization
-import Logo from "@/Images/Image.png";
-import Payment from "@/app/Payment/page"
-
-const Header: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
+const Header = () => {
   return (
-    <header className="w-full h-[124px] bg-white border-b border-gray-200 shadow-md relative">
-      {/* Top Section: All elements in one row */}
-      <div className="flex justify-between items-center px-4 h-full">
-        {/* Menu Icon */}
-        <div className="relative">
-          <FiMenu
-            className="text-gray-600 cursor-pointer"
-            size={20}
-            onClick={toggleMenu}
-          />
-          {/* Dropdown Menu */}
-          {menuOpen && (
-            <div className="absolute top-10 left-0 bg-white shadow-lg rounded-md w-[150px] py-2 z-20">
-              <ul className="flex flex-col space-y-2 px-4">
-                <li>
-                  <a href="/" className="text-gray-700 hover:text-blue-500">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="Payment" className="text-gray-700 hover:text-blue-500">
-                    Payment
-                  </a>
-                </li>
-                <li>
-                  <a href="/services" className="text-gray-700 hover:text-blue-500">
-                    Services
-                  </a>
-                </li>
-              </ul>
+    <header className='bg-white w-full flex justify-start md:justify-between items-start md:items-center p-6'>
+        <div className='flex flex-col md:flex-row md:space-y-0 space-y-8 items-center justify-between space-x-0
+         md:space-x-20 w-full md:w-[500px]'>
+            <div className='self-start'>
+                <h1 className='text-primary text-3xl font-bold'>MORENT</h1>
             </div>
-          )}
+            <div className='border flex w-full lg:w-96 items-center rounded-full'>
+            <CiSearch  size={20} className='ml-3 text-sec'/>
+                <input type="text" placeholder='Search something here...'
+                className='px-2 py-1 outline-none w-full lg:w-80'
+                />
+                <Image src={filter} alt='' width={20} className='mr-3'/>
+            </div>
+            
         </div>
-
-        {/* Logo and Search Bar */}
-        <div className="flex items-center gap-2">
-          <h1 className="text-xl font-bold text-blue-500">MORENT</h1>
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-[200px] h-[30px] p-2 pl-4 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {/* Search Icon */}
-            <button className="absolute right-2 text-blue-500">
-              <FiMenu size={16} />
-            </button>
-          </div>
+        <div>
+            <div className='flex items-center space-x-6'>
+                <div className='hidden sm:block'>
+                <div className='space-x-6 flex items-center'>      
+            <div className='h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center border'>
+            <FaHeart size={20} color='#596780'/>
+            </div>
+            <div className='h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center border relative'>
+            <div className='absolute h-2 w-2 bg-[#FF4423] rounded-full top-0 right-0'></div>
+            <IoIosNotifications size={20} color='#596780'/>
+            </div>
+            <div className='h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center border'>
+            <IoSettingsSharp size={20} color='#596780'/>
+            </div>
+            </div>
+            </div>
+            <div  className='w-14 h-14 flex items-center'>
+                <Image src={profile}  alt=''/>
+            </div>
+            </div>
         </div>
-
-        {/* Icons and Avatar Section */}
-        <div className="flex items-center gap-3">
-          {/* Heart Icon */}
-          <AiOutlineHeart className="text-gray-600 cursor-pointer" size={20} />
-
-          {/* Notification Icon */}
-          <AiOutlineBell className="text-gray-600 cursor-pointer" size={20} />
-
-          {/* Settings Icon */}
-          <FiSettings className="text-gray-600 cursor-pointer" size={20} />
-
-          {/* Avatar Image with border */}
-          <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-300">
-            <Image
-              src={Logo} // Replace with actual image path
-              alt="User Avatar"
-              width={32}
-              height={32}
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </div>
+        
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

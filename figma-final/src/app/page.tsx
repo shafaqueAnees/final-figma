@@ -1,25 +1,16 @@
-import Header from "@/components/Header";
-import FeaturedCar from "@/components/FeaturedCar";
-import CarDetails from "@/components/CarDetails";
-import Reviews from "@/components/Reviews";
-import RecommendedCars from "@/components/RecomendedCar";
-import Footer from "@/components/Footer";
-import Card from "@/components/Card"
-import Pick from "@/components/Pick";
+import Header from "@/components/header";
+import Hero from "@/components/hero";
+import Rentcar from "@/components/rentcar";
+import Image from "next/image";
+import Link from "next/link";
 
-const CarDetailPage = () => {
+export default function Home() {
   return (
-    <div className="max-w-screen-md mx-auto">
-      <Header />
-      <FeaturedCar />
-      <Pick />
-      {/* <CarDetails /> */}
-      {/* <Reviews /> */}
-      <RecommendedCars />
-      {/* <Card /> */}
-      <Footer />
-    </div>
+    <>
+    <section className="py-6 px-10 ">
+    <Hero/>
+    <Rentcar/>
+    </section>
+    </>
   );
-};
-
-export default CarDetailPage;
+}
